@@ -415,6 +415,13 @@ output application/json
 payload map $ filter $.Patient_ID== vars.patients_ID]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="4685f4b9-f21f-42cb-b15f-9f64bfb98672" />
+		<ee:transform doc:name="Transform Message" doc:id="25dc6f79-2ff6-464b-88fa-7111e02bd453" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
     </flow>
 </mule>
