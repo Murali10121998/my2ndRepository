@@ -335,6 +335,19 @@ output application/json
 ]]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+		<ee:transform doc:name="Transform Message" doc:id="e950a52b-9fb7-4981-8733-671fe56ccb11" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload filter $.Drug_ID == vars.orders_ID as Number map{
+	Patient_ID:$.Patient_ID ,
+	PatientName:$.PatientName,
+	Drug:$.Drugs,
+	Dosage:$.Dosage
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
     </flow>
     <flow name="get:\patients\(patients_ID):patientdrugdetails-md-config">
         <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core">
